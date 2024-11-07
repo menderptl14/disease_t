@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box">
+            <div id="chat-output" class="chat-output"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type a message..." />
+                <button id="send-btn">Send</button>
+                <p>
+                    {% if response %}
+                    <p>{{ response }}</p>
+                    {% endif %}
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatOutput = document.getElementById('chat-output');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        sendBtn.addEventListener('click', () => {
+            const userInput = chatInput.value;
+            if (userInput) {
+                addChatMessage('You', userInput);
+                getBotResponse(userInput);
+                chatInput.value = '';
+            }
+        });
+
+        function addChatMessage(sender, message) {
+            const messageElem = document.createElement('div');
+            messageElem.classList.add('chat-message');
+            messageElem.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatOutput.appendChild(messageElem);
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+        }
+
+        function getBotResponse(userInput) {
+            let botMessage = "I'm just a simple bot!";
+            if (userInput.toLowerCase().includes("hello")) {
+                botMessage = "Hi there!";
+            } else if (userInput.toLowerCase().includes("how are you")) {
+                botMessage = "I'm good, thank you for asking!";
+            }
+
+            setTimeout(() => {
+                addChatMessage('Bot', botMessage);
+            }, 500); // Simulate bot thinking time
+        }
+    </script>
+</body>
+</html>
+
+
