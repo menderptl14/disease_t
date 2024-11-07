@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Health Care Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+
+  <style>
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            color: black;
+            margin-top: 0;
+            margin-left: 2px;
+        }
+
+        .myimg {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            border-radius: 25px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+        <div class="container-fluid">
+            <!-- Logo at the top-left corner -->
+            <!-- <div class="logo">
+                <img class="myimg" src="{{ url_for('static', filename='heal.jpg') }}" alt="">
+            </div> -->
+
+            <a class="navbar-brand" href="#">Health Assistant</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+<!-- main form of page -->
+<h1 class="mt-4 my-4 text-center text-green">Devil Health Assistant</h1>
+
+<div class="container my-4 mt-4" style="background: #e9f7ef; color: black; border-radius: 15px; padding: 40px;">
+    <form action="/predict" method="post">
+        <div class="form-group">
+            <label for="symptoms-select">Select Symptom:</label>
+            <select id="symptoms-select" class="form-control symptoms-dropdown" onchange="updateSymptoms()">
+                <option value="">Choose a symptom</option>
+                <option value="itching">itching</option>
+                <option value="skin_rash">skin_rash</option>
+                <option value="nodal_skin_eruptions">nodal_skin_eruptions</option>
+                <option value="continuous_sneezing">continuous_sneezing</option>
+                <option value="shivering">shivering</option>
+                <option value="chills">chills</option>
+                <option value="joint_pain">joint_pain</option>
+                <option value="stomach_pain">stomach_pain</option>
+                <option value="acidity">acidity</option>
+                <option value="ulcers_on_tongue">ulcers_on_tongue</option>
+                <option value="muscle_wasting">muscle_wasting</option>
+                <option value="vomiting">vomiting</option>
+                <option value="burning_micturition">burning_micturition</option>
+                <option value="spotting_ urination">spotting_ urination</option>
+                <option value="fatigue">fatigue</option>
+                <option value="weight_gain">weight_gain</option>
+                <option value="anxiety">anxiety</option>
+                <option value="cold_hands_and_feets">cold_hands_and_feets</option>
+                <option value="mood_swings">mood_swings</option>
+                <option value="weight_loss">weight_loss</option>
+                <option value="restlessness">restlessness</option>
+                <option value="lethargy">lethargy</option>
+                <option value="patches_in_throat">patches_in_throat</option>
+                <option value="irregular_sugar_level">irregular_sugar_level</option>
+                <option value="cough">cough</option>
+                <option value="high_fever">high_fever</option>
+                <option value="sunken_eyes">sunken_eyes</option>
+                <option value="breathlessness">breathlessness</option>
+                <option value="sweating">sweating</option>
+                <option value="dehydration">dehydration</option>
+                <option value="indigestion">indigestion</option>
+                <option value="headache">headache</option>
+                <option value="yellowish_skin">yellowish_skin</option>
+                <option value="dark_urine">dark_urine</option>
+                <option value="nausea">nausea</option>
+                <option value="loss_of_appetite">loss_of_appetite</option>
+                <option value="pain_behind_the_eyes">pain_behind_the_eyes</option>
+                <option value="back_pain">back_pain</option>
+                <option value="constipation">constipation</option>
+                <option value="abdominal_pain">abdominal_pain</option>
+                <option value="diarrhoea">diarrhoea</option>
+                <option value="mild_fever">mild_fever</option>
+                <option value="yellow_urine">yellow_urine</option>
+                <option value="yellowing_of_eyes">yellowing_of_eyes</option>
+                <option value="acute_liver_failure">acute_liver_failure</option>
+                <option value="fluid_overload">fluid_overload</option>
+                <option value="swelling_of_stomach">swelling_of_stomach</option>
+                <option value="swelled_lymph_nodes">swelled_lymph_nodes</option>
+                <option value="malaise">malaise</option>
+                <option value="blurred_and_distorted_vision">blurred_and_distorted_vision</option>
+                <option value="phlegm">phlegm</option>
+                <option value="throat_irritation">throat_irritation</option>
+                <option value="redness_of_eyes">redness_of_eyes</option>
+                <option value="sinus_pressure">sinus_pressure</option>
+                <option value="runny_nose">runny_nose</option>
+                <option value="congestion">congestion</option>
+                <option value="chest_pain">chest_pain</option>
+                <option value="weakness_in_limbs">weakness_in_limbs</option>
+                <option value="fast_heart_rate">fast_heart_rate</option>
+                <option value="pain_during_bowel_movements">pain_during_bowel_movements</option>
+                <option value="pain_in_anal_region">pain_in_anal_region</option>
+                <option value="bloody_stool">bloody_stool</option>
+                <option value="irritation_in_anus">irritation_in_anus</option>
+                <option value="neck_pain">neck_pain</option>
+                <option value="dizziness">dizziness</option>
+                <option value="cramps">cramps</option>
+                <option value="bruising">bruising</option>
+                <option value="obesity">obesity</option>
+                <option value="swollen_legs">swollen_legs</option>
+                <option value="swollen_blood_vessels">swollen_blood_vessels</option>
+                <option value="puffy_face_and_eyes">puffy_face_and_eyes</option>
+                <option value="enlarged_thyroid">enlarged_thyroid</option>
+                <option value="brittle_nails">brittle_nails</option>
+                <option value="swollen_extremeties">swollen_extremeties</option>
+                <option value="excessive_hunger">excessive_hunger</option>
+                <option value="extra_marital_contacts">extra_marital_contacts</option>
+                <option value="drying_and_tingling_lips">drying_and_tingling_lips</option>
+                <option value="slurred_speech">slurred_speech</option>
+                <option value="knee_pain">knee_pain</option>
+                <option value="hip_joint_pain">hip_joint_pain</option>
+                <option value="muscle_weakness">muscle_weakness</option>
+                <option value="stiff_neck">stiff_neck</option>
+                <option value="swelling_joints">swelling_joints</option>
+                <option value="movement_stiffness">movement_stiffness</option>
+                <option value="spinning_movements">spinning_movements</option>
+                <option value="loss_of_balance">loss_of_balance</option>
+                <option value="unsteadiness">unsteadiness</option>
+                <option value="weakness_of_one_body_side">weakness_of_one_body_side</option>
+                <option value="loss_of_smell">loss_of_smell</option>
+                <option value="bladder_discomfort">bladder_discomfort</option>
+                <option value="foul_smell_of urine">foul_smell_of urine</option>
+                <option value="continuous_feel_of_urine">continuous_feel_of_urine</option>
+                <option value="passage_of_gases">passage_of_gases</option>
+                <option value="internal_itching">internal_itching</option>
+                <option value="toxic_look_(typhos)">toxic_look_(typhos)</option>
+                <option value="depression">depression</option>
+                <option value="irritability">irritability</option>
+                <option value="muscle_pain">muscle_pain</option>
+                <option value="altered_sensorium">altered_sensorium</option>
+                <option value="red_spots_over_body">red_spots_over_body</option>
+                <option value="belly_pain">belly_pain</option>
+                <option value="abnormal_menstruation">abnormal_menstruation</option>
+                <option value="dischromic *patches">dischromic *patches</option>
+                <option value="watering*from_eyes">watering*from_eyes</option>
+                <option value="increased_appetite">increased_appetite</option>
+                <option value="polyuria">polyuria</option>
+                <option value="family_history">family_history</option>
+                <option value="mucoid_sputum">mucoid_sputum</option>
+                <option value="rusty_sputum">rusty_sputum</option>
+                <option value="lack_of_concentration">lack_of_concentration</option>
+                <option value="visual_disturbances">visual_disturbances</option>
+                <option value="receiving_blood_transfusion">receiving_blood_transfusion</option>
+                <option value="receiving_unsterile_injections">receiving_unsterile_injections</option>
+                <option value="coma">coma</option>
+                <option value="stomach_bleeding">stomach_bleeding</option>
+                <option value="distention_of_abdomen">distention_of_abdomen</option>
+                <option value="history_of_alcohol_consumption">history_of_alcohol_consumption</option>
+                <option value="fluid_overload.1">fluid_overload.1</option>
+                <option value="blood_in_sputum">blood_in_sputum</option>
+                <option value="prominent_veins_on_calf">prominent_veins_on_calf</option>
+                <option value="palpitations">palpitations</option>
+                <option value="painful_walking">painful_walking</option>
+                <option value="pus_filled_pimples">pus_filled_pimples</option>
+                <option value="blackheads">blackheads</option>
+                <option value="scurring">scurring</option>
+                <option value="skin_peeling">skin_peeling</option>
+                <option value="silver_like_dusting">silver_like_dusting</option>
+                <option value="small_dents_in_nails">small_dents_in_nails</option>
+                <option value="inflammatory_nails">inflammatory_nails</option>
+                <option value="blister">blister</option>
+                <option value="red_sore_around_nose">red_sore_around_nose</option>
+                <option value="yellow_crust_ooze">yellow_crust_ooze</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="symptoms">Selected Symptoms:</label>
+            <input type="text" class="form-control" id="symptoms" name="symptoms" placeholder="Selected symptoms will appear here">
+        </div>
+        <br>
+       
+        <br>
+
+        <!-- Display the transcribed text here -->
+        <div name="mysysms" id="transcription"></div>
+
+        {% if message %}
+        <p>{{ message }}</p>
+        {% endif %}
+        <br>
+
+        <button type="submit" class="btn btn-success btn-lg" style="width: 100%; padding: 14px; margin-bottom: 5px;">Predict</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+{% if predicted_disease %}
+
+<!-- Results -->
+<h1 class="text-center my-4 mt-4">Our AI System Results</h1>
+<div class="container">
+
+    <div class="result-container">
+        <!-- Buttons to toggle display -->
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal" style="padding:4px;  margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#F39334;color:black;">Disease</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#descriptionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#268AF3 ;color:black;">Description</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#precautionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#F371F9 ;color:black;">Precaution</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#medicationsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px;border-radius:5px; background:#F8576F ;color:black;">Medications</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#workoutsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#99F741 ;color:black;">Suggestion</button>
+        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#dietsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#E5E23D;color:black;">Diets</button>
+    </div>
+</div>
+
+{% endif %}
+
+<!-- Disease Modal -->
+    <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;"> <!-- Set header background color inline -->
+                    <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body;"> <!-- Set modal body background color inline -->
+                    <p>{{ predicted_disease }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Description Modal -->
+    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="descriptionModalLabel">Description</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>{{ dis_des }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Precaution Modal -->
+    <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in my_precautions %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Medications Modal -->
+    <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in medications %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workouts Modal -->
+    <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="workoutsModalLabel"> Suggestion </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in workout %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Diets Modal -->
+    <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #020606; color:white;">
+                    <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        {% for i in my_diet %}
+                            <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+        <script>
+    const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
+    const transcriptionDiv = document.getElementById('transcription');
+
+    startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
+
+    function startSpeechRecognition() {
+        const recognition = new webkitSpeechRecognition(); // Use webkitSpeechRecognition for compatibility
+
+        recognition.lang = 'en-US'; // Set the language for recognition
+
+        recognition.onresult = function (event) {
+            const result = event.results[0][0].transcript;
+            transcriptionDiv.textContent = result;
+        };
+
+        recognition.onend = function () {
+            console.log('Speech recognition ended.');
+        };
+
+        recognition.start();
+    }
+    function updateSymptoms() {
+        var symptomsSelect = document.getElementById('symptoms-select');
+        var symptomsInput = document.getElementById('symptoms');
+        if (symptomsInput.value) {
+            symptomsInput.value += ', ' + symptomsSelect.value;
+        } else {
+            symptomsInput.value = symptomsSelect.value;
+        }
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>
+

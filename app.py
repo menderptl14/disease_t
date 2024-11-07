@@ -51,7 +51,7 @@ def load_data(state):
         description = load_csv("description (1).csv")
         medications = load_csv('medications.csv')
         diets = load_csv("diets.csv")
-        svc = load_model('svc (1).pkl')
+        svc = load_model('svc.pkl')
 
     # Optionally log if files were successfully loaded
     if sym_des is None or svc is None:
