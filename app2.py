@@ -6,7 +6,6 @@ import pickle
 
 app = Flask(__name__)
 
-
 # file_path = r"C:\Users\Mahendra\Favorites\health_03\Medicine-Recommendation-System--main\symtoms_df.csv"
 # sym_des = pd.read_csv(file_path)
 
@@ -63,7 +62,7 @@ def get_predicted_value(patient_symptoms):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("disease.html")
 
 # Define a route for the home page
 @app.route('/predict', methods=['GET', 'POST'])
@@ -75,7 +74,7 @@ def home():
         print(symptoms)
         if symptoms =="Symptoms":
             message = "Please either write symptoms or you have written misspelled symptoms"
-            return render_template('index.html', message=message)
+            return render_template('disease.html', message=message)
         else:
 
             # Split the user's input into a list of symptoms (assuming they are comma-separated)
@@ -89,11 +88,11 @@ def home():
             for i in precautions[0]:
                 my_precautions.append(i)
 
-            return render_template('index.html', predicted_disease=predicted_disease, dis_des=dis_des,
+            return render_template('disease.html', predicted_disease=predicted_disease, dis_des=dis_des,
                                    my_precautions=my_precautions, medications=medications, my_diet=rec_diet,
                                    workout=workout)
 
-    return render_template('index.html')
+    return render_template('disease.html')
 
 
 
