@@ -2,3 +2,4 @@ pandas
 pickle
 numpy
 flask
+scikit-learn
